@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<conio.h>
-#define SIZE 10;
+#include<stdlib.h>
+#define SIZE 5
 void isempty();
 int isfull();
 void push();
 void pop();
 void display();
-int item[10],i, top=-1,choice=0;
+int item[SIZE],i, top=-1,choice=0;
 int main()
 {
     while(choice!=6)
@@ -31,8 +32,8 @@ int main()
         isempty();
         break;
     default: 
-        printf("Please Enter the Valid Choice");  
-        exit(1);
+        printf("Please Enter the Valid Choice: ");  
+        exit(0);
     }
     };
 return 0;
@@ -41,19 +42,40 @@ void isempty(){
     if(top<0){
         printf("Stack is Empty \n");
     }
-
 }
 int isfull(){
+    if(top==SIZE-1)
+    {
+        printf("The stack is full\n");
+    }
+    else{
+        printf("The stack is not full\n");
+    }
 
 }
 void push(){
     int ele;
-    printf("Enter the item to be inserted");
+    if((top+1)<=SIZE-1)
+    {
+    printf("Enter the item to be inserted: ");
     scanf("%d", &ele);
     top=top+1;
     item[top]=ele;
     }
+    else
+    {
+        printf("The stack is Full.\n No more items can be added \n");
+    }
+    }
 void pop(){
+    if(top>-1)
+    {
+    printf("The deleted item is %d\n", item[top]);
+    top=top-1;
+    }
+    else{
+        printf("The stack is empty \n");
+            }
 
 }
 void display(){
